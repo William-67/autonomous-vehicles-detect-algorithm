@@ -103,7 +103,7 @@ public class PointCloud {
             if (file.createNewFile()) {
                 System.out.println("File "+ filename + " created");
             } else {
-                System.out.println("File already exist, new file will overwrite the old one");
+                System.out.println("File " + filename + " already exist, new file will overwrite the old one");
             }
 
         } catch (IOException e) {

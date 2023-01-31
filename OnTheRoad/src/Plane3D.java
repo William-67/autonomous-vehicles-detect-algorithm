@@ -98,13 +98,14 @@ public class Plane3D {
         Point3D p2 = new Point3D(1,2,0);
         Point3D p3 = new Point3D(-1,2,1);
         Point3D p4 = new Point3D(5,2,7);
+        Point3D p5 = new Point3D(1,2,0);
         Plane3D plane3D = new Plane3D(p1,p2,p3);
 
         //expected : 1.0x + 2.0y + 2.0z -5.0 = 0
         System.out.println(plane3D);
 
         //expected : 6.0 ;
-        System.out.println(plane3D.getDistance(p4));
+        System.out.println(plane3D.getDistance(p5)==0);
 
     }
 

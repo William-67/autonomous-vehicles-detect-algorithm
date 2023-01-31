@@ -15,15 +15,19 @@ public class Test {
 
             //Assume 99% confidence, 10% support
             int iterationNumber = planeRANSAC.getNumberOfIterations(
-                    0.99,0.1);
+                    0.99,0.99);
 
-            for (int j = 0; j < 3;j++){
+            planeRANSAC.setEps(45);
 
-                String tempFileName = "PointCloud1_p"+ j +".xyz";
+            for (int j = 1; j < 4;j++){
+
+                String tempFileName = "PointCloud" + i + "_p" + j +".xyz";
 
                 planeRANSAC.run(iterationNumber, tempFileName);
 
             }
+
+            planeRANSAC.saveTheRest("PointCloud" + i + "_p0" +".xyz");
 
         }
 

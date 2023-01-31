@@ -10,7 +10,7 @@ public class PlaneRANSAC {
 
         this.pc = pc;
 
-        epsilon = 0;// by default
+        epsilon = 10;// by default
 
     }
 
@@ -38,6 +38,11 @@ public class PlaneRANSAC {
     }
 
     public void run(int numberOfIterations, String filename) throws IOException {
+
+        if (pc.getSize()==0){
+            System.out.println("There is no point in the point cloud");
+            return;
+        }
 
         int bestSupport = 0;
 
@@ -103,6 +108,12 @@ public class PlaneRANSAC {
         }
 
         resultPc.save(filename);
+
+    }
+
+    public void saveTheRest(String filename){
+
+        pc.save(filename);
 
     }
 

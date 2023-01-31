@@ -101,10 +101,9 @@ public class PointCloud {
             File file = new File(filename);
 
             if (file.createNewFile()) {
-                System.out.println("File created");
+                System.out.println("File "+ filename + " created");
             } else {
-                System.out.println("File already exist, cannot proceed");
-                return;
+                System.out.println("File already exist, new file will overwrite the old one");
             }
 
         } catch (IOException e) {
@@ -115,15 +114,15 @@ public class PointCloud {
 
         try {
 
-            FileWriter writer = new FileWriter(filename);
+            FileWriter writer = new FileWriter(filename,false);
 
-            writer.write("X     Y     Z");
+            writer.write("X     Y     Z\n");
 
             for (Point3D temp : cloud){
 
                 writer.write(temp.getX() + "   " +
                         temp.getY() + "   " +
-                        temp.getZ() + "   ");
+                        temp.getZ() + "   \n");
 
             }
 

@@ -39,4 +39,13 @@ public class Point3D {
     public void setZ(double z) {
         this.z = z;
     }
+
+    @Override
+    public String toString() {
+        return "Point3D{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }

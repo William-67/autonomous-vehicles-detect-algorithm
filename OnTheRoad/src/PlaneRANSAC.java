@@ -10,7 +10,7 @@ public class PlaneRANSAC {
 
         this.pc = pc;
 
-        epsilon = 10;// by default
+        epsilon = 1;// by default
 
     }
 
@@ -37,7 +37,7 @@ public class PlaneRANSAC {
 
     }
 
-    public void run(int numberOfIterations, String filename) throws IOException {
+    public void run(int numberOfIterations, String filename) throws IOException, CloneNotSupportedException {
 
         if (pc.getSize()==0){
             System.out.println("There is no point in the point cloud");
@@ -47,7 +47,6 @@ public class PlaneRANSAC {
         int bestSupport = 0;
 
         PointCloud bestPc = new PointCloud();
-        Plane3D bestPlane = null;
 
         PointCloud resultPc = new PointCloud();
 
@@ -55,7 +54,7 @@ public class PlaneRANSAC {
 
             int currentSupport = 0;
 
-            PointCloud temp = pc;
+            PointCloud temp = (PointCloud) pc.clone();
 
             Point3D p1 = temp.getPoint();
             temp.remove(p1);
@@ -68,10 +67,19 @@ public class PlaneRANSAC {
 
             Plane3D plane = new Plane3D(p1,p2,p3);
 
+            PointCloud lastResult = (PointCloud) resultPc.clone();
+            resultPc = new PointCloud();
+            resultPc.addPoint(p1);
+            resultPc.addPoint(p2);
+            resultPc.addPoint(p3);
+
             for(int j =0; j < temp.getSize();j++){
 
                 if (plane.getDistance(temp.getPoint(j)) < epsilon){
                     currentSupport++;
+                    resultPc.addPoint(temp.getPoint(j));
+                    temp.remove(temp.getPoint(j));
+                    j--;
                 }
 
             }
@@ -79,33 +87,15 @@ public class PlaneRANSAC {
             if (currentSupport > bestSupport){
 
                 bestSupport = currentSupport;
-                bestPc = temp;
-                bestPlane = plane;
+                bestPc = (PointCloud) temp.clone();
 
-                if (resultPc.getSize() != 0){
-                    resultPc = new PointCloud();
-                }
-
-                resultPc.addPoint(p1);
-                resultPc.addPoint(p2);
-                resultPc.addPoint(p3);
-
+            }else{
+                resultPc = lastResult;
             }
 
         }
 
-        pc = bestPc;
-
-        for (int i =0; i < bestPc.getSize();i++){
-
-            if (bestPlane.getDistance(bestPc.getPoint(i)) == 0){
-
-                pc.remove(bestPc.getPoint(i));
-                resultPc.addPoint(bestPc.getPoint(i));
-
-            }
-
-        }
+        pc = (PointCloud) bestPc.clone();
 
         resultPc.save(filename);
 

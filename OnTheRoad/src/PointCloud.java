@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class PointCloud {
+public class PointCloud implements Cloneable{
 
     private LinkedList<Point3D> cloud;
 
@@ -12,6 +12,18 @@ public class PointCloud {
 
         cloud = new LinkedList<>();
 
+    }
+
+    public Object clone(){
+
+        PointCloud p = null;
+        try{
+            p = (PointCloud) super.clone();
+        }catch (CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+        p.cloud = (LinkedList<Point3D>)cloud.clone();
+        return p;
     }
 
     public int getSize(){
@@ -72,6 +84,10 @@ public class PointCloud {
     }
 
     public void addPoint(Point3D pt){
+
+        if (cloud.contains(pt)){
+            return;
+        }
 
         cloud.add(pt);
 
@@ -170,7 +186,6 @@ public class PointCloud {
         return it;
     }
 
-
     // main function is for self-testing only
 
     public static void main(String[] args) {
@@ -182,8 +197,16 @@ public class PointCloud {
         cloud1.addPoint(new Point3D(6,7,9));
         cloud1.addPoint(new Point3D(7,8,6));
 
-        for (int i = 0; i< 3; i++) System.out.println(cloud1.getPoint());
-        //There is a chance they get the same point
+        Iterator iterator = cloud1.iterator();
+
+        while (iterator.hasNext()){
+
+            System.out.println(iterator.next());
+
+        }
+
+//        for (int i = 0; i< 3; i++) System.out.println(cloud1.getPoint());
+//        //There is a chance they get the same point
 
 //        PointCloud cloud2 = cloud1;  //by test, cloud1 pass by value
 //

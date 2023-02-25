@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Iterator;
 
 public class PlaneRANSAC {
 
@@ -83,6 +84,17 @@ public class PlaneRANSAC {
                 }
 
             }
+
+//            Iterator<Point3D> it = temp.iterator();
+//            while (it.hasNext()){
+//
+//                Point3D aPoint = it.next();
+//                if (plane.getDistance(aPoint) < epsilon){
+//                    currentSupport++;
+//                    resultPc.addPoint(aPoint);
+//                    it.remove();
+//                }
+//            }
 
             if (currentSupport > bestSupport){
 

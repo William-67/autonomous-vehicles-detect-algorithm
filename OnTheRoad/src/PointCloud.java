@@ -178,7 +178,7 @@ public class PointCloud implements Cloneable{
 
             @Override
             public void remove() {
-                throw new UnsupportedOperationException();
+                cloud.remove(index-1);
             }
 
         };

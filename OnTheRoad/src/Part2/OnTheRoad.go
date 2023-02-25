@@ -203,35 +203,40 @@ func RemovePlane(plane Plane3D, points []Point3D, eps float64) []Point3D{
 
 func main(){
 
-    p1 := Point3D{3,4,5}
-    p2 := Point3D{5,6,7}
-    p3 := Point3D{8,6,2}
+    filename := os.Args[1]
 
-    p4 := Point3D{6,15,13}
-    p5 := Point3D{5.4,5.6,0.7}
-    p6 := Point3D{8.9,6.4,2.1}
+    pointcloud := ReadXYZ(filename)
 
-    fmt.Println("Test for GetDistance() between two points")
+// Test for all previous function 
+    // p1 := Point3D{3,4,5}
+    // p2 := Point3D{5,6,7}
+    // p3 := Point3D{8,6,2}
 
-    fmt.Println("The distance is: ", p1.GetDistance(&p2))
+    // p4 := Point3D{6,15,13}
+    // p5 := Point3D{5.4,5.6,0.7}
+    // p6 := Point3D{8.9,6.4,2.1}
 
-    PointList := []Point3D{p1,p2,p3,p4,p5,p6}
+    // fmt.Println("Test for GetDistance() between two points")
 
-    plane := GetPlane(PointList)
+    // fmt.Println("The distance is: ", p1.GetDistance(&p2))
 
-    eps := 1.7
+    // PointList := []Point3D{p1,p2,p3,p4,p5,p6}
 
-    fmt.Println("Test for GetPlane(): ", plane)
+    // plane := GetPlane(PointList)
 
-    fmt.Println("Test for GetNumberOfIterations(): ", GetNumberOfIterations(0.95, 0.34))
+    // eps := 1.7
 
-    fmt.Println("Test for GetSupport(): ", GetSupport(plane, PointList,eps))
+    // fmt.Println("Test for GetPlane(): ", plane)
 
-    fmt.Println("Test for GetSupportingPoints(): ", GetSupport(plane, PointList,eps))
-    fmt.Println("Test for RemovePlane(): ", RemovePlane(plane, PointList,eps))
+    // fmt.Println("Test for GetNumberOfIterations(): ", GetNumberOfIterations(0.95, 0.34))
 
-    pc2 := ReadXYZ("PointCloud1.xyz")
+    // fmt.Println("Test for GetSupport(): ", GetSupport(plane, PointList,eps))
 
-    SaveXYZ("test.txt", pc2)
+    // fmt.Println("Test for GetSupportingPoints(): ", GetSupport(plane, PointList,eps))
+    // fmt.Println("Test for RemovePlane(): ", RemovePlane(plane, PointList,eps))
+
+    // pc2 := ReadXYZ("PointCloud1.xyz")
+
+    // SaveXYZ("test.txt", pc2)
 
 }

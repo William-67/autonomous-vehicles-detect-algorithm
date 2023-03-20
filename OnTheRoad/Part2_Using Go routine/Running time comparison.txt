@@ -1,0 +1,34 @@
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  1
+Time for running the program:  1.0070162s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  5
+Time for running the program:  1.004754s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  10
+Time for running the program:  1.000223s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  45
+Time for running the program:  1.0008616s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  50
+Time for running the program:  1.0002451s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  70
+Time for running the program:  1.0012147s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  100
+Time for running the program:  1.1374341s
+
+C:\Users\weili\OneDrive - University of Ottawa\Desktop\Work_Channel\William\Part2>go run planeRANSAC.go pointcloud1.xyz 0.90 0.13 0.1
+Used number of threads:  150
+Time for running the program:  1.2415223s
+
+time may vary each time the program runs, but trend of the time for goroutine from 1->150 is going up
+and then down, the optimal number of threads is 50 approximately 

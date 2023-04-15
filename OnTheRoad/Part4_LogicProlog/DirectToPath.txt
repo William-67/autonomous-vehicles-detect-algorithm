@@ -1,0 +1,3 @@
+consult('D:\\uOttawa\\CSI\\2120\\Project\\OnTheRoad\\Part4_LogicProlog\\ransac.pl').
+
+consult('D:\\uOttawa\\CSI\\2120\\A2\\family.pl').
